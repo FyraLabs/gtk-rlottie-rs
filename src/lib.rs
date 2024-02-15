@@ -7,6 +7,9 @@ use flate2::read::GzDecoder;
 use std::io::Read;
 use std::time::Duration;
 
+#[cfg(feature = "capi")]
+mod capi;
+
 #[derive(Debug)]
 struct RenderInfo {
     frame_num: usize,
@@ -42,11 +45,31 @@ mod imp {
         pub(super) use_cache: Cell<bool>,
     }
 
+    #[repr(C)]
+    pub struct LottieAnimationClass {
+        pub parent_class: gtk::ffi::GtkWidgetClass,
+    }
+
+    #[repr(C)]
+    pub struct LottieAnimation {
+        parent: gtk::ffi::GtkWidget,
+    }
+
+    unsafe impl ClassStruct for LottieAnimationClass {
+        type Type = crate::imp::Animation;
+    }
+
+    unsafe impl InstanceStruct for LottieAnimation {
+        type Type = crate::imp::Animation;
+    }
+
     #[glib::object_subclass]
     impl ObjectSubclass for Animation {
         const NAME: &'static str = "LottieAnimation";
         type Type = super::Animation;
         type ParentType = gtk::Widget;
+        type Class = LottieAnimationClass;
+        type Instance = LottieAnimation;
     }
 
     impl ObjectImpl for Animation {

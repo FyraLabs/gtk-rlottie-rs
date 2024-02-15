@@ -5,7 +5,27 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[features]
+capi = []
+
+[build-dependencies]
+cbindgen = { path = "./cbindgen", features = ["gobject"] }
+cargo_metadata = "0.18.1"
+
 [dependencies]
-gtk =  { version = "0.7", package = "gtk4" }
+gtk = { version = "0.7", package = "gtk4", features = ["unsafe-assume-initialized"] }
 rlottie = "0.5.1"
 flate2 = "1.0.24"
+
+[package.metadata.capi.header]
+name = "gtk4-rlottie"
+subdirectory = "gtk4-rlottie"
+generation = false
+
+[package.metadata.capi.pkg_config]
+filename = "gtk4-rlottie"
+requires = "gtk4"
+
+[package.metadata.capi.library]
+name = "gtk4-rlottie"
+

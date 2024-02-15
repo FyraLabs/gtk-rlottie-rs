@@ -1,0 +1,2 @@
+namespace = "Lottie"
+sys_includes = ["gtk/gtk.h"]
