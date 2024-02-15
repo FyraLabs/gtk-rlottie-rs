@@ -10,16 +10,16 @@ rlottie as flatpak module:
 
 ```json
 {
-    "name": "rlottie",
-    "buildsystem": "meson",
-    "config-opts": ["-Dwerror=false"],
-    "sources": [
-        {
-            "type": "git",
-            "url": "https://github.com/melix99/rlottie",
-            "branch": "fix-build"
-        }
-    ]
+  "name": "rlottie",
+  "buildsystem": "meson",
+  "config-opts": ["-Dwerror=false"],
+  "sources": [
+    {
+      "type": "git",
+      "url": "https://github.com/melix99/rlottie",
+      "branch": "fix-build"
+    }
+  ]
 }
 ```
 
@@ -30,3 +30,7 @@ sudo dnf install rlottie-devel
 ```
 
 Animations for examples are taken from the [Unigram repo](https://github.com/UnigramDev/Unigram/tree/develop/Unigram/Unigram/Assets/Animations)
+
+to build the clib, run `make`
+
+referenced https://gitlab.gnome.org/malureau/rdw a lot for the clib functionality, so big thanks
