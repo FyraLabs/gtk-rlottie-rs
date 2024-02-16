@@ -33,4 +33,4 @@ Animations for examples are taken from the [Unigram repo](https://github.com/Uni
 
 to build the clib, run `make`
 
-referenced https://gitlab.gnome.org/malureau/rdw a lot for the clib functionality, so big thanks
+referenced and used scripts from https://gitlab.gnome.org/malureau/rdw for a lot for the clib functionality, so big thanks
